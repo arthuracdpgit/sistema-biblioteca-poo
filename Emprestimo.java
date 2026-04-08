@@ -32,13 +32,16 @@ public class Emprestimo implements Exibivel, CalculavelMulta {
     }
 
     @Override
-    public String exibirResumo() {
-        String status = devolvido ? "Devolvido" : "Em andamento";
-        return "Usuário: " + usuario.getNome() + 
-               " | Material: " + material.getTitulo() + 
-               " | Status: " + status + 
-               " | Multa: R$ " + calcularMulta();
-    }
+public String exibirResumo() {
+    String status = devolvido ? "Devolvido" : "Em andamento";
+
+    String multaFormatada = String.format("%.2f", calcularMulta());
+    
+    return "Usuário: " + usuario.getNome() + 
+           " | Material: " + material.getTitulo() + 
+           " | Status: " + status + 
+           " | Multa: R$ " + multaFormatada;
+}
 
     public Usuario getUsuario() { return usuario; }
     public boolean isDevolvido() { return devolvido; }
